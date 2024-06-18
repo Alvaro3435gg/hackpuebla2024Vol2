@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Optimizador de Búsquedas</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>STUDY<span class="copilot">copilot</span></h1>
+  
+  <!-- Nueva barra de búsqueda -->
+  <form class="form-wrapper">
+    <input type="text" id="search" placeholder="Que buscas?" required>
+    <input type="submit" value="IR" id="submit">
+  </form>
+  
+  <button id="summary-button">Resumen</button>
+  <div class="confidence">
+    <span>Confiabilidad:</span>
+    <div class="confidence-meter">
+      <div style="width: 50%;"></div>
+    </div>
+  </div>
+  <div id="summary">Aqui ira el resumen de la pagina web</div>
+  <button id="speak-summary">Voz</button>
+  <script src="../popup.js"></script>
+</body>
+</html>
+
