@@ -8,42 +8,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>STUDY<span class="copilot">copilot</span></h1>
-  <form id="form" class="form-wrapper">
-    <input type="text" id="search" name="query" placeholder="Que buscas?" required>
-    <div class="form-group">
-      <label for="filetype">Tipo de archivo:</label>
-      <select id="filetype" name="filetype">
-        <option value="pdf">PDF</option>
-        <option value="doc">DOC</option>
-        <option value="ppt">PPT</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="source">Fuente:</label>
-      <select id="source" name="source">
-        <option value="google">Google</option>
-        <option value="scholar">Google Scholar</option>
-        <option value="pubmed">PubMed</option>
-        <option value="jstor">JSTOR</option>
-        <option value="Web_of_Science">Web of Science</option>
-        <option value="IEEE_Xplore">IEEE Xplore</option>
-      </select>
-    </div>
-    <button type="submit" value="IR" id="submit">Buscar</button>
-  </form>
-  <p id="optimizedSearch"></p>
-  <hr>
-  <button id="summary-button">Resumen</button>
-  <div class="confidence">
-    <span>Confiabilidad:</span>
-    <div class="confidence-meter">
-      <div style="width: 50%;"></div>
-    </div>
+  <div id="intro">
+    <img src="../css/lupa.png" alt="Lupa" id="magnifying-glass">
   </div>
-  <div id="summary"></div>
-  <button id="speak-summary">Voz</button>
+  <div id="main-content" style="display: none;">
+    <h1>STUDY<span class="copilot">copilot</span></h1>
+    <form id="form" class="form-wrapper">
+      <input type="text" id="search" name="query" placeholder="Que buscas?" required>
+      <div class="form-group">
+        <label for="filetype">Tipo de archivo:</label>
+        <select id="filetype" name="filetype">
+          <option value="pdf">PDF</option>
+          <option value="doc">DOC</option>
+          <option value="ppt">PPT</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="source">Fuente:</label>
+        <select id="source" name="source">
+          <option value="google">Google</option>
+          <option value="scholar">Google Scholar</option>
+          <option value="pubmed">PubMed</option>
+          <option value="jstor">JSTOR</option>
+          <option value="Web_of_Science">Web of Science</option>
+          <option value="IEEE_Xplore">IEEE Xplore</option>
+        </select>
+      </div>
+      <button type="submit" value="IR" id="submit">Buscar</button>
+    </form>
+    <p id="optimizedSearch"></p>
+    <hr>
+    <button id="summary-button">Resumen</button>
+    <div class="confidence">
+      <span>Confiabilidad:</span>
+      <div class="confidence-meter">
+        <div style="width: 50%;"></div>
+      </div>
+    </div>
+    <div id="summary"></div>
+    <button id="speak-summary">Voz</button>
+  </div>
   <script src="../js/popup.js"></script>
   <script src="../js/APIsummary.js"></script>
+  <script src="../js/intro.js"></script>
 </body>
 </html>

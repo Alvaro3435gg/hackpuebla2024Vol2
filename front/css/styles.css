@@ -8,6 +8,32 @@ body {
   padding: 20px;
   width: 300px;
 }
+#intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #4C3BCF;
+  background-image: linear-gradient(#4B70F5, #3DC2EC);
+}
+
+#magnifying-glass {
+  width: 100px;
+  height: 100px;
+  animation: zoom-out 3s forwards;
+}
+
+@keyframes zoom-out {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
 h1 {
   font-size: 18px;
   margin-bottom: 20px;
@@ -37,7 +63,7 @@ button {
 button:hover {
   background-color: #00B8B0;
 }
-#summary-button{
+#summary-button {
   margin-bottom: 15px;
 }
 
