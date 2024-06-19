@@ -9,7 +9,28 @@
 </head>
 <body>
   <h1>STUDY<span class="copilot">copilot</span></h1>
-  
+  <form id="form" >
+    <input type="text" id="query" name="query" placeholder="Que buscas?" required>
+    <label for="filetype">Tipo de archivo:</label>
+    <select id="filetype" name="filetype">
+      <option value="pdf">PDF</option>
+      <option value="doc">DOC</option>
+      <option value="ppt">PPT</option>
+    </select>
+    <p></p>
+    <label for="source">Fuente:</label>
+    <select id="source" name="source">
+      <option value="google">Google</option>
+      <option value="scholar">Google Scholar</option>
+      <option value="pubmed">PubMed</option>
+      <option value="jstor">JSTOR</option>
+      <option value="Web_of_Science">Web of Science</option>
+      <option value="IEEE_Xplore">IEEE Xplore</option>
+    </select>
+    <button type="submit">Buscar</button>
+  </form>
+  <p id="optimizedSearch"></p>
+  <hr>
   <!-- Nueva barra de búsqueda -->
   <form class="form-wrapper">
     <input type="text" id="search" placeholder="Que buscas?" required>
