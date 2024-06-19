@@ -1,7 +1,10 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from openai import OpenAI
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
+api_key = os.getenv('OPENAI_API_KEY')
 app = Flask(__name__)
 CORS(app)  # Permitir solicitudes CORS desde cualquier origen
 
@@ -10,7 +13,8 @@ def read_text_file(file_path):
         return file.read()
 
 # Configura tu cliente OpenAI
-print("cambia esto por tu api key")
+client = OpenAI(api_key=api_key)
+
 @app.route('/get_response')
 def get_response():
     user_message = read_text_file('../front/files/prueba.txt')
