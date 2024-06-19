@@ -1,10 +1,24 @@
 {
     "manifest_version": 3,
-    "name": "Hello Extensions",
+    "name": "Study copilot",
     "description": "Base Level Extension",
     "version": "1.0",
     "action": {
       "default_popup": "front/views/index.html",
       "default_icon": "front/css/hello_extensions.png"
-    }
+    },
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "background": {
+      "service_worker": "front/js/background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["front/js/content.js"]
+      }
+    ]
   }
+  
