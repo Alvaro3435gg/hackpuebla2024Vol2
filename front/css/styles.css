@@ -12,11 +12,11 @@ h1 {
   font-size: 18px;
   margin-bottom: 20px;
 }
-.copilot{
+.copilot {
   font-weight: 100;
 }
 input[type="text"] {
-  width: calc(100% - 40px);
+  width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 10px;
   border: 2px solid #00D9D0;
@@ -26,7 +26,7 @@ button {
   display: block;
   width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-top: 10px;
   background-color: #00D9D0;
   border: none;
   border-radius: 5px;
@@ -37,6 +37,10 @@ button {
 button:hover {
   background-color: #00B8B0;
 }
+#summary-button{
+  margin-bottom: 15px;
+}
+
 .confidence {
   display: flex;
   align-items: center;
@@ -64,7 +68,7 @@ button:hover {
   border-radius: 5px;
   height: auto;
   overflow: auto;
-}  
+}
 /* Estilos de la nueva barra de búsqueda */
 .form-wrapper {
   background-color: #f6f6f6;
@@ -76,64 +80,27 @@ button:hover {
   box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
   margin: 10px auto;
   overflow: hidden;
-  padding: 8px;
-  width: calc(100% - 20px); /* Ajustar el ancho del contenedor */
-  height: 40px;
-}
-
-.form-wrapper #search {
-  border: 1px solid #CCC;
-  box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-  border-radius: 3px;
-  color: #999;
-  float: left;
-  font: 16px 'Rubik', sans-serif;
-  height: 20px;
   padding: 10px;
-  width: calc(100% - 130px); /* Ajustar el ancho del input */
+  width: calc(100% - 20px); /* Ajustar el ancho del contenedor */
 }
 
-.form-wrapper #search:focus {
-  border-color: #aaa;
-  box-shadow: 0 1px 1px #bbb inset;
-  outline: 0;
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.form-wrapper #search:-moz-placeholder,
-.form-wrapper #search:-ms-input-placeholder,
-.form-wrapper #search::-webkit-input-placeholder {
-  color: #999;
-  font-weight: normal;
+label {
+  flex: 1;
 }
 
-.form-wrapper #submit {
-  background-color: #0483a0;
-  background-image: linear-gradient(top, #31b2c3, #0483a0);
-  border: 1px solid #00748f;
-  border-radius: 3px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
-  color: #fafafa;
-  cursor: pointer;
-  height: 42px;
-  float: right;
-  font: 15px Arial, Helvetica;
-  padding: 0;
-  text-transform: uppercase;
-  text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
-  width: 100px;
+select {
+  flex: 2;
+  padding: 5px;
 }
 
-.form-wrapper #submit:hover,
-.form-wrapper #submit:focus {
-  background-color: #31b2c3;
-  background-image: linear-gradient(top, #0483a0, #31b2c3);
-}
-
-.form-wrapper #submit:active {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-  outline: 0;
-}
-
-.form-wrapper #submit::-moz-focus-inner {
-  border: 0;
+button#submit {
+  width: 100%; /* Hacer el botón más ancho */
+  font-size: 18px; /* Aumentar el tamaño del texto */
 }

@@ -1,7 +1,7 @@
 document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const query = document.getElementById('query').value;
+    const query = document.getElementById('search').value; // Cambiado de 'query' a 'search'
     const filetype = document.getElementById('filetype').value;
     const source = document.getElementById('source').value;
 
