@@ -10,7 +10,6 @@ def read_text_file(file_path):
         return file.read()
 
 # Configura tu cliente OpenAI
-#client = OpenAI(api_key="aqui va un token")
 
 @app.route('/get_response')
 def get_response():
