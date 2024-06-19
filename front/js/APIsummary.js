@@ -15,6 +15,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let summaryText = document.getElementById('summary').innerText;
         speakText(summaryText);
     });
+
+    document.getElementById('feedbackInput').addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            let feedbackText = event.target.value;
+            let summary = getSummary();
+            sendFeedback(feedbackText, summary);
+        }
+    });
+
 });
 
 function getSummary() {
@@ -34,6 +44,21 @@ function getResponse(summaryContent) {
         .then(data => {
             document.getElementById('summary').innerText = data.response;
             document.getElementById('feedback-form').style.display = 'block'; // Muestra el formulario de feedback
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function sendFeedback(feedbackText, summary) {
+    fetch('http://127.0.0.1:5000/feedback', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ feedback: feedbackText, content: summary}),
+    })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('summary').innerText = data.response;
         })
         .catch(error => console.error('Error:', error));
 }

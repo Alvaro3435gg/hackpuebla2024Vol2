@@ -23,5 +23,23 @@ def get_response():
     content = completion.choices[0].message.content
     return jsonify({'response': content})
 
+
+@app.route('/feedback', methods=['POST'])
+def feedback():
+    data = request.get_json()
+    question = data.get('feedback', '')
+    content = data.get('content', '')
+
+    completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "Responde la pregunta del usuario sobre el resumen con el siguiente contexto: " + content},
+            {"role": "user", "content": question}
+        ]
+    )
+    content = completion.choices[0].message.content
+    return jsonify({'response': content})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
