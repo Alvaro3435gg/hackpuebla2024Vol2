@@ -10,7 +10,7 @@ def read_text_file(file_path):
         return file.read()
 
 # Configura tu cliente OpenAI
-
+print("cambia esto por tu api key")
 @app.route('/get_response')
 def get_response():
     user_message = read_text_file('../front/files/prueba.txt')
