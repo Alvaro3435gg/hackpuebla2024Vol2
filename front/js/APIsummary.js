@@ -71,6 +71,8 @@ function sendFeedback(feedbackText, summary) {
 function fetchVeracity() {
     let summaryContent = getSummary(); // Obtiene el resumen actual
 
+    console.log(getSummary) 
+
     fetch('http://127.0.0.1:5000/veracity', {
         method: 'POST',
         headers: {
@@ -85,6 +87,8 @@ function fetchVeracity() {
 
             // Seleccionar el elemento con la clase .confidence-meter div
             let confidenceMeter = document.querySelector('.confidence-meter div');
+
+            //console.log(percentage) 
 
             // Aplicar el ancho calculado dinámicamente y ajustar el color
             confidenceMeter.style.width = percentage + '%';
