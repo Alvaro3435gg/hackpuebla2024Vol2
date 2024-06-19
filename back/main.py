@@ -29,7 +29,6 @@ def feedback():
     data = request.get_json()
     question = data.get('feedback', '')
     content = data.get('content', '')
-
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -61,6 +60,26 @@ def get_trust_score():
     
     print(trust_score)
     return jsonify({'trust_score': trust_score})
+
+
+
+@app.route('/veracity', methods=['POST'])
+def get_veracity():
+    data = request.get_json()
+    summary = data.get('summary', '')
+    print("Esto es summary: " + summary)
+
+    completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "dame un número del uno al 100 en el que me digas que tan confiable es la página que te dirá el usuario para realizar investigaciones academicas, la evaluación debe ser objetiva y basada en la credibilidad de la fuente ya que blogs foros o wikipedia no son confiables, solo puedes responder con un número y su respectivo simbolo de porcentaje, ejemplo (numero)%, ese formato es tu unica respuesta permitida."},
+            {"role": "user", "content": summary}
+        ]
+    )
+    print("Esto es summary: " + summary)
+    content = completion.choices[0].message.content
+    print("Este es el contenido: "  + content)
+    return jsonify({'response': content})
 
 
 if __name__ == '__main__':
