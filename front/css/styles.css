@@ -62,7 +62,7 @@ button:hover {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  height: 100px;
+  height: auto;
   overflow: auto;
 }  
 /* Estilos de la nueva barra de búsqueda */
