@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)  # Permitir solicitudes CORS desde cualquier origen
 
 # Configura tu cliente OpenAI
-client = OpenAI(api_key="sk-proj-ICzHe8jbnGYQWDNzJqJ2T3BlbkFJEwjlFwtKF4Hqdp7aWdro")
+client = OpenAI(api_key="aqui va un token")
 
 @app.route('/get_response', methods=['POST'])
 def get_response():
