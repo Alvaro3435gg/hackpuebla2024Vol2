@@ -40,6 +40,28 @@ def feedback():
     content = completion.choices[0].message.content
     return jsonify({'response': content})
 
+@app.route('/get_trust_score', methods=['POST'])
+def get_trust_score():
+    data = request.get_json()
+    url = data.get('url', '')
+    
+    completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "Califica la siguiente URL en confiabilidad del 1 al 10, solo envia un numero, nada mas"},
+            {"role": "user", "content": url}
+        ]
+    )
+    trust_score = completion.choices[0].message.content.strip()
+    # Convert trust_score to an integer, with error handling
+    try:
+        trust_score = int(trust_score)
+    except ValueError:
+        trust_score = 0  # Default to 0 if conversion fails
+    
+    print(trust_score)
+    return jsonify({'trust_score': trust_score})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

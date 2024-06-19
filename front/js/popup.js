@@ -26,9 +26,12 @@ document.getElementById('form').addEventListener('submit', function(event) {
     } else if (source === 'IEEE_Xplore') {
         // IEEE Xplore no soporta operadores como filetype:
         searchUrl = `https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=${encodeURIComponent(query)}`;
-    } else if (source === 'Web_of_Science') {
+    }  else if (source === 'Web_of_Science') {
         // Web of Science no soporta operadores como filetype:
         searchUrl = `https://www.webofscience.com/wos/woscc/summary/=${encodeURIComponent(query)}`;
+    } else if (source === 'wikipedia') {
+        // Wikipedia search
+        searchUrl = `https://es.wikipedia.org/wiki/Especial:Buscar?search=${encodeURIComponent(query)}`;
     }
 
     chrome.tabs.create({ url: searchUrl });
