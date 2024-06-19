@@ -69,44 +69,47 @@ function sendFeedback(feedbackText, summary) {
 }
 
 function fetchVeracity() {
-    let summaryContent = getSummary(); // Obtiene el resumen actual
+    // Obtener la URL del sitio web actual
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        let currentTab = tabs[0];
+        let summaryContent = currentTab.url; // Obtener la URL actual
 
-    console.log(getSummary) 
+        console.log(summaryContent);
 
-    fetch('http://127.0.0.1:5000/veracity', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ summary: summaryContent }), // Enviar el resumen al servidor
-    })
-        .then(response => response.json())
-        .then(data => {
-            // Suponiendo que recibes un valor de porcentaje en data.response (por ejemplo, "54%")
-            let percentage = parseInt(data.response, 10);
-
-            // Seleccionar el elemento con la clase .confidence-meter div
-            let confidenceMeter = document.querySelector('.confidence-meter div');
-
-            //console.log(percentage) 
-
-            // Aplicar el ancho calculado dinámicamente y ajustar el color
-            confidenceMeter.style.width = percentage + '%';
-            if (percentage >= 0 && percentage <= 20) {
-                confidenceMeter.style.backgroundColor = 'red';
-            } else if (percentage >= 21 && percentage <= 40) {
-                confidenceMeter.style.backgroundColor = 'orange';
-            } else if (percentage >= 41 && percentage <= 60) {
-                confidenceMeter.style.backgroundColor = 'yellow';
-            } else if (percentage >= 61 && percentage <= 80) {
-                confidenceMeter.style.backgroundColor = 'lightgreen';
-            } else if (percentage >= 81 && percentage <= 100) {
-                confidenceMeter.style.backgroundColor = 'green';
-            }
+        fetch('http://127.0.0.1:5000/veracity', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ summary: summaryContent }), // Enviar la URL al servidor
         })
-        .catch(error => console.error('Error:', error));
-}
+            .then(response => response.json())
+            .then(data => {
+                // Suponiendo que recibes un valor de porcentaje en data.response (por ejemplo, "54%")
+                let percentage = parseInt(data.response, 10);
 
+                // Seleccionar el elemento con la clase .confidence-meter div
+                let confidenceMeter = document.querySelector('.confidence-meter div');
+
+                //console.log(percentage);
+
+                // Aplicar el ancho calculado dinámicamente y ajustar el color
+                confidenceMeter.style.width = percentage + '%';
+                if (percentage >= 0 && percentage <= 20) {
+                    confidenceMeter.style.backgroundColor = 'red';
+                } else if (percentage >= 21 && percentage <= 40) {
+                    confidenceMeter.style.backgroundColor = 'orange';
+                } else if (percentage >= 41 && percentage <= 60) {
+                    confidenceMeter.style.backgroundColor = 'yellow';
+                } else if (percentage >= 61 && percentage <= 80) {
+                    confidenceMeter.style.backgroundColor = 'lightgreen';
+                } else if (percentage >= 81 && percentage <= 100) {
+                    confidenceMeter.style.backgroundColor = 'green';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+}
 function speakText(text) {
     if ('speechSynthesis' in window) {
         let utterance = new SpeechSynthesisUtterance(text);
