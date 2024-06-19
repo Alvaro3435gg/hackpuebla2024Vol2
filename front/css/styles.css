@@ -29,6 +29,10 @@ body.dark-mode #intro {
   background-image: none;
 }
 
+#negro{
+  color: #121212;
+}
+
 #main-content {
   display: none;
 }
