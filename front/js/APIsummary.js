@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
             });
         });
     });
+
+    document.getElementById('speak-summary').addEventListener('click', () => {
+        let summaryText = document.getElementById('summary').innerText;
+        speakText(summaryText);
+    });
 });
 
 function getSummary() {
@@ -31,4 +36,14 @@ function getResponse(summaryContent) {
             document.getElementById('feedback-form').style.display = 'block'; // Muestra el formulario de feedback
         })
         .catch(error => console.error('Error:', error));
+}
+
+function speakText(text) {
+    if ('speechSynthesis' in window) {
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-ES'; // Establece el idioma de la síntesis de voz a español de España
+        window.speechSynthesis.speak(utterance);
+    } else {
+        console.error('Tu navegador no soporta la síntesis de voz.');
+    }
 }
