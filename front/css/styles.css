@@ -88,18 +88,9 @@ button:hover {
 .confidence-meter div {
   height: 100%;
   background-color: #00D9D0;
-  width: 0; /* Inicia desde 0% */
-  animation: fillMeter 2s forwards; /* Aplica la animación */
+  width: 0%; /* Inicia desde 0% */
 }
 
-@keyframes fillMeter {
-  from {
-    width: 0; /* Empieza en 0% */
-  }
-  to {
-    width: 90%; /* Termina en 50% */
-  }
-}
 #summary {
   background-color: white;
   padding: 10px;

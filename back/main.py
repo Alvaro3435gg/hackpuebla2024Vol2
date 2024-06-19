@@ -41,5 +41,22 @@ def feedback():
     return jsonify({'response': content})
 
 
+
+@app.route('/veracity', methods=['POST'])
+def get_veracity():
+    data = request.get_json()
+    summary = data.get('summary', '')
+
+    completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "dame un número del uno al 100 en el que me digas que tan confiable es la página que te dirá el usuario, solo puedes responder con un número y su respectivo simbolo de porcentaje, ejemplo 58%, ese formato es tu unica respuesta permitida"},
+            {"role": "user", "content": summary}
+        ]
+    )
+    content = completion.choices[0].message.content
+    return jsonify({'response': content})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
