@@ -28,6 +28,7 @@ function getResponse(summaryContent) {
         .then(response => response.json())
         .then(data => {
             document.getElementById('summary').innerText = data.response;
+            document.getElementById('feedback-form').style.display = 'block'; // Muestra el formulario de feedback
         })
         .catch(error => console.error('Error:', error));
 }
